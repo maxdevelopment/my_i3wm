@@ -242,6 +242,7 @@ exec --no-startup-id slack
 exec --no-startup-id skypeforlinux
 exec --no-startup-id firefox
 exec --no-startup-id conky -c ~/Conky_sh/.conkyrc
+exec --no-startup-id dropbox start
 
 bindsym $mod+t border toggle
 bindsym $mod+m move workspace to output left
