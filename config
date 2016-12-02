@@ -236,7 +236,7 @@ bar {
 
 exec --no-startup-id ~/.i3/dual_monitors.sh
 exec --no-startup-id nm-applet
-exec --no-startuo-id dunst -config ~/.i3/dunstrc
+exec --no-startup-id dunst -config ~/.i3/dunstrc
 exec --no-startup-id roxterm
 exec --no-startup-id slack
 exec --no-startup-id skypeforlinux
