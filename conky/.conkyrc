@@ -1,0 +1,84 @@
+conky.config = {
+	update_interval=1,
+	total_run_times=0,
+	net_avg_samples=1,
+	cpu_avg_samples=1,
+
+	imlib_cache_size=0,
+	double_buffer=true,
+	no_buffers=true,
+
+	use_xft=true,
+	override_utf8_locale=true,
+	background=false,
+	text_buffer_size=2048,
+
+	own_window=true,
+	own_window_transparent=true, 
+	own_window_type="override",
+	alignment="top_right",
+
+	draw_shades=false,
+
+	default_color="f2ebc7",
+	color0="C0C0C0"
+};
+conky.text=[[
+${voffset -5}${alignc}${font DejaVu sans mono:size=10}${execpi 300 DJS=`date +%_d`; cal | sed 's/^/${alignc} /' | sed s/" $DJS "/" "'${color red}'"$DJS"'${color}'" "/}${font}
+
+${voffset -15}${color0}${font OpenLogos:size=19}N${font}${color}${goto 32}${voffset -14}${font DejaVu sans mono:size=10}Kernel:  ${alignr}${kernel}${font}
+${goto 32}${font DejaVu sans mono:size=10}Uptime: ${alignr}${uptime}${font}
+
+${color0}${font StyleBats:size=30}K${font}${color}${goto 45}${voffset -30}${font DejaVu sans mono:size=10}CPU freq.:${alignr}${freq_g}GHz${font}
+${font DejaVu sans mono:size=10}
+${goto 50}[1] ${goto 80}${cpu cpu0}%${goto 110}${cpugraph cpu0 5,50 C6B9A6 C6B9A6}${goto 170}[2] ${goto 200}${cpu cpu1}%${goto 230}${cpugraph cpu1 5,50 C6B9A6 C6B9A6}
+${goto 50}[3] ${goto 80}${cpu cpu2}%${goto 110}${cpugraph cpu2 5,50 C6B9A6 C6B9A6}${goto 170}[4] ${goto 200}${cpu cpu3}%${goto 230}${cpugraph cpu3 5,50 C6B9A6 C6B9A6}
+${goto 50}[5] ${goto 80}${cpu cpu4}%${goto 110}${cpugraph cpu4 5,50 C6B9A6 C6B9A6}${goto 170}[6] ${goto 200}${cpu cpu5}%${goto 230}${cpugraph cpu5 5,50 C6B9A6 C6B9A6}
+${goto 50}[7] ${goto 80}${cpu cpu6}%${goto 110}${cpugraph cpu6 5,50 C6B9A6 C6B9A6}${goto 170}[8] ${goto 200}${cpu cpu7}%${goto 230}${cpugraph cpu7 5,50 C6B9A6 C6B9A6}
+${font}
+${font DejaVu sans mono:size=10}
+${color F0F0F0}boot ${color}${goto 50}[${color F0E68C}${fs_size /boot}${color}]${goto 130}${fs_used /boot}[${fs_used_perc /boot}%]${goto 230}${color 32CD32}${fs_free /boot}
+${color F0F0F0}/ ${color}${goto 50}[${color F0E68C}${fs_size /}${color}]${goto 130}${fs_used /}[${fs_used_perc /}%]${goto 230}${color 32CD32}${fs_free /}
+${color F0F0F0}home ${color}${goto 50}[${color F0E68C}${fs_size /home}${color}]${goto 130}${fs_used /home}[${fs_used_perc /home}%]${goto 230}${color 32CD32}${fs_free /home}
+${color F0F0F0}win_c ${color}${goto 50}[${color F0E68C}${fs_size /mnt/win_c}${color}]${goto 130}${fs_used /mnt/win_c}[${fs_used_perc /mnt/win_c}%]${goto 230}${color 32CD32}${fs_free /mnt/win_c}
+${color F0F0F0}win_d ${color}${goto 50}[${color F0E68C}${fs_size /mnt/win_d}${color}]${goto 130}${fs_used /mnt/win_d}[${fs_used_perc /mnt/win_d}%]${goto 230}${color 32CD32}${fs_free /mnt/win_d}
+${voffset 5}
+${color white}Процессор:${color}
+${color FEFEFE}${top name 1} ${alignr}${top pid 1}${top cpu 1}%${top mem 1}%${color}
+${color EEEEEE}${top name 2} ${alignr}${top pid 2}${top cpu 2}%${top mem 2}%${color}
+${color DEDEDE}${top name 3} ${alignr}${top pid 3}${top cpu 3}%${top mem 3}%${color}
+${color CECECE}${top name 4} ${alignr}${top pid 4}${top cpu 4}%${top mem 4}%${color}
+${color BEBEBE}${top name 5} ${alignr}${top pid 5}${top cpu 5}%${top mem 5}%${color}
+${voffset 5}Память:
+${color FEFEFE}${top_mem name 1} ${alignr}${top_mem pid 1}${top_mem cpu 1}%${top_mem mem 1}%${color}
+${color EEEEEE}${top_mem name 2} ${alignr}${top_mem pid 2}${top_mem cpu 2}%${top_mem mem 2}%${color}
+${color DEDEDE}${top_mem name 3} ${alignr}${top_mem pid 3}${top_mem cpu 3}%${top_mem mem 3}%${color}
+${color CECECE}${top_mem name 4} ${alignr}${top_mem pid 4}${top_mem cpu 4}%${top_mem mem 4}%${color}
+${color BEBEBE}${top_mem name 5} ${alignr}${top_mem pid 5}${top_mem cpu 5}%${top_mem mem 5}%${color}
+${font}
+
+${if_up wlp3s0}
+${voffset -7}${color0}${font VariShapes Solid:size=12}q${font}${color}${goto 32}${voffset -6}${font DejaVu sans mono:size=10}Отправка: ${upspeed wlp3s0} ${alignr}${upspeedgraph wlp3s0 8,50 C6B9A6 C6B9A6}
+${goto 32}Всего: ${totalup wlp3s0}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=12}Q${font}${color}${goto 32}${voffset -6}${font DejaVu sans mono:size=10}Приём: ${downspeed wlp3s0} ${alignr}${downspeedgraph wlp3s0 8,50 C6B9A6 C6B9A6}
+${goto 32}Всего: ${totaldown wlp3s0}${font}
+${voffset -2}${color0}${font Poky:size=14}Y${font}${color}${goto 32} ${voffset -2}${font DejaVu sans mono:size=10}Сигнал: ${wireless_link_qual_perc wlp3s0}% ${alignr}${wireless_link_bar 8,60 wlp3s0}${font}
+${voffset 4}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -8}${font DejaVu sans mono:size=10}Локальный IP: ${alignr}${addr wlp3s0}
+${goto 32}Внешний IP: ${alignr}${execi 1800 ~/.i3/conky/conkyIp}${font}
+
+${else}${if_up p5p1}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${upspeed eth0}${font} ${alignr}${upspeedgraph p5p1 8,60 C6B9A6 C6B9A6}
+${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totalup p5p1}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Приём: ${font Droid Sans:style=Bold:size=8}${downspeed p5p1}${font} ${alignr}${downspeedgraph p5p1 8,60 C6B9A6 C6B9A6}
+${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totaldown p5p1}${font}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Локальный IP: ${alignr}${addr p5p1}
+${goto 32}Внешний IP: ${alignr}${execi 1800 ~/.i3/conky/conkyIp}
+
+${else}${if_up ppp0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${upspeed ppp0}${font} ${alignr}${upspeedgraph ppp0 8,60 C6B9A6 C6B9A6}
+${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totalup ppp0}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Приём: ${font Droid Sans:style=Bold:size=8}${downspeed ppp0}${font} ${alignr}${downspeedgraph ppp0 8,60 C6B9A6 C6B9A6}
+${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totaldown ppp0}${font}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Локальный IP: ${alignr}${addr ppp0}
+${else}${voffset 4}${color0}${font PizzaDude Bullets:size=12}4${font}${color}${goto 32}Сеть недоступна${voffset 14}${endif}${endif}${endif}
+]];
