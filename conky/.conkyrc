@@ -26,7 +26,7 @@ conky.config = {
 conky.text=[[
 ${voffset -5}${alignc}${font DejaVu sans mono:size=10}${execpi 300 DJS=`date +%_d`; cal | sed 's/^/${alignc} /' | sed s/" $DJS "/" "'${color red}'"$DJS"'${color}'" "/}${font}
 
-${voffset -15}${color0}${font OpenLogos:size=19}N${font}${color}${goto 32}${voffset -14}${font DejaVu sans mono:size=10}Kernel:  ${alignr}${kernel}${font}
+${voffset -15}${color0}${font OpenLogos:size=22}t${font}${color}${goto 32}${voffset -14}${font DejaVu sans mono:size=10}Kernel:  ${alignr}${kernel}${font}
 ${goto 32}${font DejaVu sans mono:size=10}Uptime: ${alignr}${uptime}${font}
 
 ${color0}${font StyleBats:size=30}K${font}${color}${goto 45}${voffset -30}${font DejaVu sans mono:size=10}CPU freq.:${alignr}${freq_g}GHz${font}

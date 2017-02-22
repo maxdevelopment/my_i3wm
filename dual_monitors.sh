@@ -14,8 +14,8 @@ if [ `xrandr | grep -c ' connected '` -eq 2 ]; then # dual-monitor
 	if [ `xrandr | grep HDMI1 | grep -c ' connected '` -eq 1 ]; then
         xrandr --output LVDS1 --auto --output HDMI1 --auto --primary --left-of LVDS1
 	fi
-    feh --bg-scale ~/.i3/img/screen3.jpg
+    feh --bg-scale ~/.i3/img/screen4.jpg
 else
    xrandr --output LVDS1 --auto --primary --output VGA1 --off --output DVI1 --off --output HDMI1 --off
-   feh --bg-scale ~/.i3/img/screen3.jpg
+   feh --bg-scale ~/.i3/img/screen4.jpg
 fi
