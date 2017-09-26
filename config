@@ -10,11 +10,16 @@
 #
 
 set $mod Mod4
-set $tag1 "1: Talks &#xf0e6;"
-set $tag2 "2: WWW &#xf0ac;"
-set $tag3 "3: Work &#xf19c;"
-set $tag4 "4: Console &#xf120;"
-set $tag5 "5: Media &#xf001;"
+#set $tag1 "1: Talks &#xf0e6;"
+set $tag1 "Talks"
+#set $tag2 "2: WWW &#xf0ac;"
+set $tag2 "WWW"
+#set $tag3 "3: Work &#xf19c;"
+set $tag3 "Work"
+#set $tag4 "4: Console &#xf120;"
+set $tag4 "Console"
+#set $tag5 "5: Media &#xf001;"
+set $tag5 "Media"
 
 set $red #AC4344
 set $green #769070
@@ -163,6 +168,7 @@ for_window [class="(?i)virtualbox"] floating enable
 for_window [class="(?i)keepassx"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="(?i)sylpheed"] floating enable
+for_window [class="(?i)postman"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -199,22 +205,22 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-	colors {
-        	background $black
-        	statusline $white
-        	separator  $custom
-
-        	# ws               border  bg      text
-        	focused_workspace  $green  $green  $white
-        	active_workspace   $blue   $blue   $white
-        	inactive_workspace $custom $custom $white
-        	urgent_workspace   $red    $red    $white
-    	}
-	position top
-	status_command i3blocks -c ~/.i3/i3blocks.conf
-	font xft:Droid Sans Mono, FontAwesome 10
-}
+#bar {
+#	colors {
+#        	background $black
+#        	statusline $white
+#        	separator  $custom
+#
+#        	# ws               border  bg      text
+#        	focused_workspace  $green  $green  $white
+#        	active_workspace   $blue   $blue   $white
+#        	inactive_workspace $custom $custom $white
+#        	urgent_workspace   $red    $red    $white
+#    	}
+#	position top
+#	status_command i3blocks -c ~/.i3/i3blocks.conf
+#	font xft:Droid Sans Mono, FontAwesome 10
+#}
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
@@ -225,7 +231,7 @@ bar {
 #
 # Please remove the following exec line:
 #######################################################################
-
+exec_always --no-startup-id $HOME/.i3/polybar_launch.sh
 exec --no-startup-id ~/.i3/dual_monitors.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst -config ~/.i3/dunstrc
