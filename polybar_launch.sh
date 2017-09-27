@@ -7,4 +7,6 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-polybar --config=$HOME/.i3/polybar_config my_bar &
+env MONITOR=HDMI3 polybar --config=$HOME/.i3/polybar_config my_bar &
+env MONITOR=HDMI2 polybar --config=$HOME/.i3/polybar_config my_bar &
+
