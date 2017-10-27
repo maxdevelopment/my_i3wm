@@ -169,6 +169,7 @@ for_window [class="(?i)keepassx"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="(?i)sylpheed"] floating enable
 for_window [class="(?i)postman"] floating enable
+for_window [class="(?i)nautilus"] floating enable, border none
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
