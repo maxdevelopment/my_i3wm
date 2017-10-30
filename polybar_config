@@ -48,7 +48,7 @@ font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=12;0
 
 modules-left = i3
-modules-center = 
+modules-center = weather
 modules-right = volume pavu_exec xkeyboard memory wlan temperature date
 
 tray-position = right
@@ -66,6 +66,14 @@ tray-padding = 2
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
+
+[module/weather]
+type = custom/script
+interval = 10
+format = <label>
+;format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+exec = ~/.i3/weather
 
 [module/pavu_exec]
 type = custom/text
