@@ -1,21 +1,52 @@
 #!/bin/python
 # -*- coding: utf-8 -*-
 
-import requests
+import datetime
+import json
+import urllib.request
 
-CITY = "625144"
-API_KEY = "c664e65eaf6656260a03bc4b877b69e7"
-UNITS = "Metric"
-UNIT_KEY = "C"
 
-REQ = requests.get("http://api.openweathermap.org/data/2.5/weather?id={}&appid={}&units={}".format(CITY, API_KEY, UNITS))
-try:
-    # HTTP CODE = OK
-    if REQ.status_code == 200:
-        CURRENT = REQ.json()["weather"][0]["description"].capitalize()
-        TEMP = int(float(REQ.json()["main"]["temp"]))
-        print("{}, {} °{}".format(CURRENT, TEMP, UNIT_KEY))
-    else:
-        print("Error: BAD HTTP STATUS CODE " + str(REQ.status_code))
-except (ValueError, IOError):
-    print("Error: Unable print the data")
+def time_converter(time):
+    converted_time = datetime.datetime.fromtimestamp(
+        int(time)
+    ).strftime('%I:%M %p')
+    return converted_time
+
+
+def url_builder(city_id):
+    user_api = 'c664e65eaf6656260a03bc4b877b69e7'  # Obtain yours form: http://openweathermap.org/
+    unit = 'metric'  # For Fahrenheit use imperial, for Celsius use metric, and the default is Kelvin.
+    api = 'http://api.openweathermap.org/data/2.5/weather?id='     # Search for your city ID here: http://bulk.openweathermap.org/sample/city.list.json.gz
+
+    full_api_url = api + str(city_id) + '&mode=json&units=' + unit + '&APPID=' + user_api
+    return full_api_url
+
+
+def data_fetch(full_api_url):
+    url = urllib.request.urlopen(full_api_url)
+    output = url.read().decode('utf-8')
+    raw_api_dict = json.loads(output)
+    url.close()
+    return raw_api_dict
+
+
+def data_organizer(raw_api_dict):
+    data = dict(
+        city=raw_api_dict.get('name'),
+        country=raw_api_dict.get('sys').get('country'),
+        temp=raw_api_dict.get('main').get('temp'),
+        wind=raw_api_dict.get('wind').get('speed'),
+        description=raw_api_dict.get('weather')[0].get('description').capitalize()
+    )
+    return data
+
+
+def data_output(data):
+    m_symbol = '\xb0' + 'C'
+    print('{},{}  {}{}  {} m/s {}'.format(data['city'], data['country'], data['temp'], m_symbol, data['wind'], data['description']))
+
+if __name__ == '__main__':
+    try:
+        data_output(data_organizer(data_fetch(url_builder(625144))))
+    except IOError:
+        print('no internet')
