@@ -4,6 +4,8 @@
 import datetime
 import json
 import urllib.request
+import time
+import os
 
 
 def time_converter(time):
@@ -39,6 +41,16 @@ def data_organizer(raw_api_dict):
         description=raw_api_dict.get('weather')[0].get('description').capitalize()
     )
     return data
+    
+def internet_on():
+	for num in range(0, 20):
+		hostname = 'google.com'
+		response = os.system('ping -c 1 ' + hostname + ' > /dev/null 2>&1')
+		if response != 0:
+			time.sleep(1)
+		else:
+			return True
+	return False
 
 
 def data_output(data):
@@ -46,7 +58,10 @@ def data_output(data):
     print('{},{}  {}{}  {} m/s {}'.format(data['city'], data['country'], data['temp'], m_symbol, data['wind'], data['description']))
 
 if __name__ == '__main__':
-    try:
-        data_output(data_organizer(data_fetch(url_builder(625144))))
-    except IOError:
-        print('no internet')
+	try:
+		if internet_on():
+			data_output(data_organizer(data_fetch(url_builder(625144))))
+		else:
+			print ('no internet')
+	except IOError:
+		print('no internet')
