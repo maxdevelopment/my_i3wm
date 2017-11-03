@@ -1,44 +1,32 @@
 #!/bin/python
 # -*- coding: utf-8 -*-
 
-import datetime
 import json
 import urllib.request
-import time
 import os
 
-
-def time_converter(time):
-    converted_time = datetime.datetime.fromtimestamp(
-        int(time)
-    ).strftime('%I:%M %p')
-    return converted_time
-
-
 def url_builder(city_id):
-    user_api = 'c664e65eaf6656260a03bc4b877b69e7'  # Obtain yours form: http://openweathermap.org/
-    unit = 'metric'  # For Fahrenheit use imperial, for Celsius use metric, and the default is Kelvin.
-    api = 'http://api.openweathermap.org/data/2.5/weather?id='     # Search for your city ID here: http://bulk.openweathermap.org/sample/city.list.json.gz
-
+    user_api = 'c664e65eaf6656260a03bc4b877b69e7'
+    unit = 'metric'
+    api = 'http://api.openweathermap.org/data/2.5/weather?id='
     full_api_url = api + str(city_id) + '&mode=json&units=' + unit + '&APPID=' + user_api
     return full_api_url
-
-
+    
 def data_fetch(full_api_url):
     url = urllib.request.urlopen(full_api_url)
     output = url.read().decode('utf-8')
     raw_api_dict = json.loads(output)
     url.close()
     return raw_api_dict
-
-
+    
 def data_organizer(raw_api_dict):
     data = dict(
         city=raw_api_dict.get('name'),
         country=raw_api_dict.get('sys').get('country'),
         temp=raw_api_dict.get('main').get('temp'),
         wind=raw_api_dict.get('wind').get('speed'),
-        description=raw_api_dict.get('weather')[0].get('description').capitalize()
+        description=raw_api_dict.get('weather')[0].get('description').capitalize(),
+        icon=raw_api_dict.get('weather')[0].get('icon')
     )
     return data
     
@@ -55,7 +43,7 @@ def internet_on():
 
 def data_output(data):
     m_symbol = '\xb0' + 'C'
-    print('{},{}  {}{}  {} m/s {}'.format(data['city'], data['country'], data['temp'], m_symbol, data['wind'], data['description']))
+    print('{},{} {}{}  {} m/s {}'.format(data['city'], data['country'], data['temp'], m_symbol, data['wind'], data['description']))
 
 if __name__ == '__main__':
 	try:
