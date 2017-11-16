@@ -170,6 +170,9 @@ for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="(?i)sylpheed"] floating enable
 for_window [class="(?i)postman"] floating enable
 for_window [class="(?i)nautilus"] floating enable, border none
+for_window [class="(?i)skype"] border pixel 1
+for_window [class="(?i)slack"] border pixel 1
+for_window [class="(?i)zoom"] border pixel 1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
