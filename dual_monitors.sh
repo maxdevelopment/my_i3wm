@@ -1,24 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/.xinitrc
 # Executed by startx (run your window manager from here)
 
 # Set up screens and set background
 if [ `xrandr | grep -c ' connected '` -eq 2 ]; then # dual-monitor
-	if [ `xrandr | grep VGA1 | grep -c ' connected '` -eq 1 ]; then
-	xrandr --output LVDS1 --auto --primary --output VGA1 --auto --right-of LVDS1
-    	fi
-    	if [ `xrandr | grep DVI1 | grep -c ' connected '` -eq 1 ]; then
-        xrandr --output LVDS1 --auto --primary --output DVI1 --auto --right-of LVDS1
-    	fi
-	if [ `xrandr | grep HDMI1 | grep -c ' connected '` -eq 1 ]; then
-        xrandr --output LVDS1 --auto --output HDMI1 --auto --primary --left-of LVDS1
+	if [ `xrandr | grep HDMI-1 | grep -c ' connected '` -eq 1 ]; then
+	xrandr --output LVDS-1 --auto --output HDMI-1 --auto --primary --right-of LVDS-1
 	fi
-	if [ `xrandr | grep HDMI2 | grep -c ' connected '` -eq 1 ]; then
-        xrandr --output HDMI3 --auto --output HDMI2 --auto --primary --left-of HDMI3
-        fi
-    feh --bg-scale ~/.i3/img/screen4.jpg
 else
-   xrandr --output LVDS1 --auto --primary --output VGA1 --off --output DVI1 --off --output HDMI1 --off
-   feh --bg-scale ~/.i3/img/screen4.jpg
+   xrandr --output LVDS-1 --auto --primary --output VGA-1 --off --output HDMI-1 --off
 fi
+feh --bg-scale ~/.i3/img/screen4.jpg
+cd ~/.i3/conky && ./startConky
+

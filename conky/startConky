@@ -1,0 +1,12 @@
+#!/bin/bash
+declare -i ScreenWidth=$(xrandr --query | awk -F '[ x]' '/\<current\>/{print $9}')
+declare -i LVDS=1920
+declare -i Padding=300
+ConkyX=$((ScreenWidth-LVDS-Padding))
+
+if [ $ScreenWidth -gt 1920 ];
+then
+	conky -c .conkyrc -a top_left -x $ConkyX -d -q
+else
+	conky -c .conkyrc -a top_right -d -q
+fi

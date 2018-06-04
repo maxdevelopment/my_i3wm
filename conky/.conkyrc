@@ -16,7 +16,6 @@ conky.config = {
 	own_window=true,
 	own_window_transparent=true, 
 	own_window_type="override",
-	alignment="top_right",
 
 	draw_shades=false,
 
