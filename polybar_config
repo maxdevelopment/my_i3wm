@@ -51,16 +51,16 @@ font-3 = FontAwesome:pixelsize=12;0
 
 modules-left = i3
 modules-center = weather
-modules-right = volume pavu_exec xkeyboard memory wlan temperature date
+modules-right = backlight alsa pavu_exec xkeyboard memory wlan temperature date battery
 
 tray-position = right
 tray-detached = false
 tray-padding = 2
-tray-transparent = true
+;tray-transparent = true
 ;tray-background = #5A000000
 
 ;wm-restack = bspwm
-wm-restack = i3
+;wm-restack = i3
 
 ;override-redirect = true
 
@@ -74,6 +74,7 @@ wm-restack = i3
 type = custom/script
 interval = 1800
 exec = ~/.i3/weather
+double-click-left = ~/.i3/weather
 
 [module/pavu_exec]
 type = custom/text
@@ -201,10 +202,12 @@ bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
-[module/backlight-acpi]
-inherit = module/xbacklight
+[module/backlight]
 type = internal/backlight
-card = intel_backlight
+card = acpi_video0
+enable-scroll = false
+format = <label>
+label =[ %percentage%% ]
 
 [module/cpu]
 type = internal/cpu
@@ -224,7 +227,7 @@ label = %gb_total%/%gb_used% %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlan0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -276,8 +279,8 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
 
-[module/volume]
-type = internal/volume
+[module/alsa]
+type = internal/alsa
 
 format-volume = <bar-volume> <label-volume>
 label-volume = %percentage%
@@ -311,30 +314,9 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC0
+battery = BAT1
+adapter = ACAD
 full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -346,8 +328,8 @@ format-underline =
 format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ;ramp-0 = 

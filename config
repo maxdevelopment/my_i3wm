@@ -140,6 +140,7 @@ for_window [class="(?i)mate-calc"] floating enable, border none
 for_window [class="(?i)skype"] floating enable, border none
 for_window [class="(?i)slack"] floating enable, border none
 for_window [class="(?i)zoom"] floating enable, border none
+for_window [class="(?i)blueman-applet"] floating enable, border none
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -175,27 +176,37 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.i3/polybar_launch.sh
-exec --no-startup-id compton
-exec --no-startup-id ~/.i3/dual_monitors.sh
+exec_always --no-startup-id xkb-switch --i3
+exec --no-startup-id picom
+exec --no-startup-id $HOME/.i3/dual_monitors.sh
 exec --no-startup-id nm-applet
-exec --no-startup-id dunst -config ~/.i3/dunstrc
+exec --no-startup-id dunst -config $HOME/.i3/dunstrc
 exec --no-startup-id dropbox start
+exec --no-startup-id xss-lock -- $HOME/.i3/i3lock_screen.sh
+exec --no-startup-id $HOME/.i3/check_battery_low.sh
+exec --no-startup-id blueman-applet
 
 bindsym $mod+t border toggle
 bindsym $mod+m move workspace to output left
 
 # scrot
-bindsym --release Print exec --no-startup-id scrot
-bindsym --release Shift+Print exec --no-startup-id scrot -s
+bindsym --release Print exec --no-startup-id scrot -e 'mv $f ~/shots/'
+bindsym --release Shift+Print exec --no-startup-id scrot -s -e 'mv $f ~/shots/'
 
 # volume control
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks 
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1
 
 # brightness control
-bindsym XF86MonBrightnessDown exec xbacklight -steps 1 -time 0 -dec 5
+bindsym XF86MonBrightnessDown exec xbacklight -steps 1 -time 0 -dec 10
 bindsym XF86MonBrightnessUp exec xbacklight -steps 1 -time 0 -inc 10
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 #lock screen
 bindsym $mod+Escape exec ~/.i3/i3lock_screen.sh
@@ -204,6 +215,6 @@ bindsym $mod+Escape exec ~/.i3/i3lock_screen.sh
 bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+2 i3blocks
 
 #class                  border	backgr.	text	indicator
-client.focused			$green	$green	$white	$dark
+client.focused		$green	$green	$white	$dark
 client.focused_inactive $gray	$gray	$black	$black
 client.unfocused        $gray	$gray	$black	$black

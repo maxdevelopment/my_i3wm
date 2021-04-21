@@ -9,7 +9,7 @@ if [ `xrandr | grep -c ' connected '` -eq 2 ]; then # dual-monitor
 	xrandr --output LVDS-1 --auto --output HDMI-1 --auto --primary --right-of LVDS-1
 	fi
 else
-   xrandr --output LVDS-1 --auto --primary --output VGA-1 --off --output HDMI-1 --off
+   xrandr --output eDP-1 --auto --primary
 fi
 feh --bg-scale ~/.i3/img/screen4.jpg
 cd ~/.i3/conky && ./startConky
