@@ -141,6 +141,8 @@ for_window [class="(?i)skype"] floating enable, border none
 for_window [class="(?i)slack"] floating enable, border none
 for_window [class="(?i)zoom"] floating enable, border none
 for_window [class="(?i)blueman-applet"] floating enable, border none
+for_window [class="(?i)evolution"] border none
+for_window [class="(?i)nm-connection-editor"] floating enable, border none
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
