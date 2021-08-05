@@ -63,13 +63,13 @@ ${voffset -2}${color0}${font Poky:size=14}Y${font}${color}${goto 32} ${voffset -
 ${voffset 4}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -8}${font DejaVu sans mono:size=10}Локальный IP: ${alignr}${addr wlan0}
 ${goto 32}Внешний IP: ${alignr}${execi 1800 ~/.i3/conky/conkyIp}${font}
 
-${else}${if_up p5p1}
-${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${upspeed eth0}${font} ${alignr}${upspeedgraph p5p1 8,60 C6B9A6 C6B9A6}
-${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totalup p5p1}${font}
-${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Приём: ${font Droid Sans:style=Bold:size=8}${downspeed p5p1}${font} ${alignr}${downspeedgraph p5p1 8,60 C6B9A6 C6B9A6}
-${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totaldown p5p1}${font}
-${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Локальный IP: ${alignr}${addr p5p1}
-${goto 32}Внешний IP: ${alignr}${execi 1800 ~/.i3/conky/conkyIp}
+${else}${if_up eno1}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${upspeed eno1}${font} ${alignr}${upspeedgraph eno1 8,60 C6B9A6 C6B9A6}
+${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totalup eno1}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Приём: ${font Droid Sans:style=Bold:size=8}${downspeed eno1}${font} ${alignr}${downspeedgraph eno1 8,60 C6B9A6 C6B9A6}
+${goto 32}Всего: ${font Droid Sans:style=Bold:size=8}${totaldown eno1}${font}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Локальный IP: ${alignr}${addr eno1}
+${goto 32}Внешний IP: ${alignr}${execi 1800 ~/.i3/conky/conkyIp}${font}
 
 ${else}${if_up ppp0}
 ${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${upspeed ppp0}${font} ${alignr}${upspeedgraph ppp0 8,60 C6B9A6 C6B9A6}

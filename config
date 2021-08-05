@@ -4,7 +4,11 @@ set $tag2 "WWW"
 set $tag3 "Work"
 set $tag4 "Console"
 set $tag5 "Media"
-set $tag6 "Desktop"
+set $tag6 "D6"
+set $tag7 "D7"
+set $tag8 "D8"
+set $tag9 "D9"
+set $tag0 "D0"
 
 set $red #AC4344
 set $green #769070
@@ -68,6 +72,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+x layout toggle all
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -95,10 +100,10 @@ bindsym $mod+3 workspace $tag3
 bindsym $mod+4 workspace $tag4
 bindsym $mod+5 workspace $tag5
 bindsym $mod+6 workspace $tag6
-bindsym $mod+7 workspace $tag6
-bindsym $mod+8 workspace $tag6
-bindsym $mod+9 workspace $tag6
-bindsym $mod+0 workspace $tag6
+bindsym $mod+7 workspace $tag7
+bindsym $mod+8 workspace $tag8
+bindsym $mod+9 workspace $tag9
+bindsym $mod+0 workspace $tag0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $tag1
@@ -107,10 +112,10 @@ bindsym $mod+Shift+3 move container to workspace $tag3
 bindsym $mod+Shift+4 move container to workspace $tag4
 bindsym $mod+Shift+5 move container to workspace $tag5
 bindsym $mod+Shift+6 move container to workspace $tag6
-bindsym $mod+Shift+7 move container to workspace $tag6
-bindsym $mod+Shift+8 move container to workspace $tag6
-bindsym $mod+Shift+9 move container to workspace $tag6
-bindsym $mod+Shift+0 move container to workspace $tag6
+bindsym $mod+Shift+7 move container to workspace $tag7
+bindsym $mod+Shift+8 move container to workspace $tag8
+bindsym $mod+Shift+9 move container to workspace $tag9
+bindsym $mod+Shift+0 move container to workspace $tag0
 
 assign [class="(?i)slack"] $tag1
 assign [class="(?i)skype"] $tag1
@@ -131,7 +136,7 @@ for_window [class="(?i)roxterm"] border none
 for_window [class="(?i)deadbeef"] border none
 for_window [class="(?i)geany"] border none
 for_window [class="(?i)virtualbox"] floating enable, border none
-for_window [class="(?i)keepassx"] floating enable, border none
+for_window [class="(?i)keepassxc"] floating enable, border none
 for_window [class="(?i)pavucontrol"] floating enable, border none
 for_window [class="(?i)sylpheed"] floating enable, border none
 for_window [class="(?i)postman"] floating enable, border none
@@ -140,9 +145,11 @@ for_window [class="(?i)mate-calc"] floating enable, border none
 for_window [class="(?i)skype"] floating enable, border none
 for_window [class="(?i)slack"] floating enable, border none
 for_window [class="(?i)zoom"] floating enable, border none
-for_window [class="(?i)blueman-applet"] floating enable, border none
+for_window [class="(?i)blueman-manager"] floating enable, border none
 for_window [class="(?i)evolution"] border none
+for_window [class="(?i)viber"] border none
 for_window [class="(?i)nm-connection-editor"] floating enable, border none
+for_window [class="(?i)evolution-alarm-notify"] floating enable, border none
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -181,15 +188,18 @@ exec_always --no-startup-id $HOME/.i3/polybar_launch.sh
 exec_always --no-startup-id xkb-switch --i3
 exec --no-startup-id picom
 exec --no-startup-id $HOME/.i3/dual_monitors.sh
-exec --no-startup-id nm-applet
 exec --no-startup-id dunst -config $HOME/.i3/dunstrc
-exec --no-startup-id dropbox start
+#exec --no-startup-id dropbox start
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id $HOME/build/nautilus-dropbox-2020.03.04/dropbox start
 exec --no-startup-id xss-lock -- $HOME/.i3/i3lock_screen.sh
 exec --no-startup-id $HOME/.i3/check_battery_low.sh
-exec --no-startup-id blueman-applet
 
 bindsym $mod+t border toggle
 bindsym $mod+m move workspace to output left
+bindsym $mod+Shift+m exec --no-startup-id $HOME/.i3/dual_monitors.sh
+#bindsym $mod+Shift+m exec --no-startup-id $HOME/.i3/polybar_launch.sh
 
 # scrot
 bindsym --release Print exec --no-startup-id scrot -e 'mv $f ~/shots/'
