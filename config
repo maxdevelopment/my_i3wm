@@ -8,7 +8,7 @@ set $tag6 "D6"
 set $tag7 "D7"
 set $tag8 "D8"
 set $tag9 "D9"
-set $tag0 "D0"
+set $tag0 "Mail"
 
 set $red #AC4344
 set $green #769070
@@ -199,7 +199,7 @@ exec --no-startup-id $HOME/.i3/check_battery_low.sh
 bindsym $mod+t border toggle
 bindsym $mod+m move workspace to output left
 bindsym $mod+Shift+m exec --no-startup-id $HOME/.i3/dual_monitors.sh
-#bindsym $mod+Shift+m exec --no-startup-id $HOME/.i3/polybar_launch.sh
+bindsym $mod+Shift+d exec --no-startup-id $HOME/.i3/clone_monitor.sh
 
 # scrot
 bindsym --release Print exec --no-startup-id scrot -e 'mv $f ~/shots/'

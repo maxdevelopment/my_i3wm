@@ -172,7 +172,7 @@ ws-icon-5 = "D6;"
 ws-icon-6 = "D7;"
 ws-icon-7 = "D8;"
 ws-icon-8 = "D9;"
-ws-icon-9 = "D0;"
+ws-icon-9 = "Mail;"
 
 [module/mpd]
 type = internal/mpd
