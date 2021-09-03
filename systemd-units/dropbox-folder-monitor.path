@@ -1,0 +1,9 @@
+[Unit]
+Description="Monitor dropbox folder changes"
+
+[Path]
+PathModified=/home/raw/MyDropbox
+Unit=dropbox.service
+
+[Install]
+WantedBy=default.target

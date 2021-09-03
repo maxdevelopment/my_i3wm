@@ -1,0 +1,5 @@
+[Unit]
+Description=Dropbox Daemon sync
+
+[Service]
+ExecStart=/home/raw/.i3/sync_dropbox.sh

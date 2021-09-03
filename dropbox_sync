@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "SYNC"
+notify-send "test"

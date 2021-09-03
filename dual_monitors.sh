@@ -13,5 +13,7 @@ else
    xrandr --output HDMI-1 --off
 fi
 feh --bg-scale ~/.i3/img/screen4.jpg
-killall conky && cd ~/.i3/conky && ./startConky && cd ~/.i3 && ./polybar_launch.sh
+killall conky; \
+cd $HOME/.i3/conky/ && ./startConky; \
+cd $HOME/.i3/ && ./polybar_launch.sh
 
