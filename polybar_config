@@ -53,7 +53,7 @@ modules-left = i3
 modules-center = weather
 modules-right = backlight alsa pavu_exec xkeyboard memory wlan temperature date battery
 
-tray-position = left
+tray-position = right
 tray-detached = false
 tray-padding = 3
 
