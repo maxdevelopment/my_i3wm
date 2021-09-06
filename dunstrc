@@ -142,7 +142,7 @@
     browser = /usr/bin/firefox -new-tab
 
     # Align icons left/right/off
-    icon_position = off
+    icon_position = left
 
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -199,7 +199,7 @@
 #
 # SCRIPTING
 # You can specify a script that gets run when the rule matches by
-# setting the "script" option.
+# setting the "script" o<ption.
 # The script will be called as follows:
 #   script appname summary body icon urgency
 # where urgency can be "LOW", "NORMAL" or "CRITICAL".
