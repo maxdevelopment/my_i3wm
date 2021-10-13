@@ -213,7 +213,7 @@ type = internal/backlight
 card = acpi_video0
 enable-scroll = false
 format = <label>
-label =  %percentage%%
+label =  %percentage%%
 
 [module/cpu]
 type = internal/cpu
