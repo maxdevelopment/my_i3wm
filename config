@@ -151,6 +151,7 @@ for_window [class="(?i)viber"] border none
 for_window [class="(?i)nm-connection-editor"] floating enable, border none
 for_window [class="(?i)evolution-alarm-notify"] floating enable, border none
 for_window [class="(?i)gnome-calendar"] floating enable, border none
+for_window [class="(?i)feh"] floating enable, border none
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
