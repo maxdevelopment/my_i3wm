@@ -44,14 +44,15 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
+;font-0 = fixed:pixelsize=10;1
+font-0 = SourceCodePro:fontformat=truetype:size=10;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=12;0
 
 modules-left = i3
 modules-center = weather
-modules-right = backlight pavu_exec alsa memory wlan date calendar xkeyboard battery
+modules-right = backlight pavu_exec pulseaudio  memory wlan date calendar xkeyboard battery
 
 tray-position = right
 tray-detached = false
@@ -284,9 +285,11 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
 
-[module/alsa]
-type = internal/alsa
-
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+use-ui-max = false
+interval = 1
 format-volume = <bar-volume> <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
@@ -309,11 +312,11 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = _
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
