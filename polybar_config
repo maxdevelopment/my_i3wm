@@ -44,11 +44,12 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 2
 
-;font-0 = fixed:pixelsize=10;1
 font-0 = SourceCodePro:fontformat=truetype:size=10;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:pixelsize=12;0
+font-3 = octicons:pixelsize=12;0
+font-4 = MaterialDesignIcons:pixelsize=12;0
+font-5 = FontAwesome:pixelsize=12;0
 
 modules-left = i3
 modules-center = weather
@@ -93,17 +94,21 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 ;blacklist-0 = num lock
 
-;format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format = <label-layout>
 
-label-layout = [%layout%]
+;format-prefix = " "
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-prefix-underline = ${colors.secondary}
+
+label-layout = 󰤃%icon%󰤃
+layout-icon-0 = us;En
+layout-icon-1 = ru;Ru
 ;label-layout-underline = ${colors.secondary}
 
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-padding = 0
+label-indicator-margin = 0
+;label-indicator-background = ${colors.secondary}
+;label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
@@ -214,7 +219,7 @@ type = internal/backlight
 card = acpi_video0
 enable-scroll = false
 format = <label>
-label =  %percentage%%
+label = %percentage%%
 
 [module/cpu]
 type = internal/cpu
@@ -235,23 +240,23 @@ label =  %gb_total%/%gb_used% %percentage_used%%
 [module/wlan]
 type = internal/network
 interface = wlan0
-interval = 3.0
+interval = 1
 
-format-connected = <label-connected>
+format-connected = <ramp-signal> <label-connected>
 ;format-connected-underline = #9f78e1
-label-connected =  %essid%
+label-connected = %essid%  󰄼%downspeed%󰄿%upspeed%
 
 format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = 
+label-disconnected = 󰤮
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-;ramp-signal-0 = 
-;ramp-signal-1 = 
-;ramp-signal-2 = 
-;ramp-signal-3 = 
-;ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-0 = 󰢿
+ramp-signal-1 = 󰢼
+ramp-signal-2 = 󰢽
+ramp-signal-3 = 󰢽
+ramp-signal-4 = 󰢾
+;ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
@@ -312,7 +317,7 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = 
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
@@ -333,7 +338,7 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
-label-full = %percentage%%
+label-full =  %percentage%%
 
 animation-charging-0 = 
 animation-charging-1 = 
