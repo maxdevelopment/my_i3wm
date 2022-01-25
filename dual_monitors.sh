@@ -6,7 +6,7 @@
 # Set up screens and set background
 if [ `xrandr | grep -c ' connected '` -eq 2 ]; then # dual-monitor
 	if [ `xrandr | grep HDMI-1 | grep -c ' connected '` -eq 1 ]; then
-	xrandr --output eDP-1 --auto --output HDMI-1 --auto --primary --left-of eDP-1
+	xrandr --output eDP-1 --auto --output HDMI-1 --auto --primary --right-of eDP-1
 	fi
 else
    xrandr --output eDP-1 --auto --primary
